@@ -33,9 +33,12 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       print('🎬 Initializing video player...');
       print('📹 Video URL: ${widget.episode.videoUrl}');
 
-      _videoPlayerController = VideoPlayerController.networkUrl(
-        Uri.parse(widget.episode.videoUrl),
+      _videoPlayerController = VideoPlayerController.asset(
+        'assets/videos/video.mp4',
       );
+      // _videoPlayerController = VideoPlayerController.networkUrl(
+      //   Uri.parse(widget.episode.videoUrl),
+      // );
 
       // Listen for errors
       _videoPlayerController.addListener(() {
@@ -181,7 +184,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                   ),
                 ),
               ],
-              const SizedBox(height: 16),
+              const SizedBox(height: 2.4),
               ElevatedButton(
                 onPressed: () {
                   setState(() {
