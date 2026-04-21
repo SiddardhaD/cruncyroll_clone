@@ -281,8 +281,8 @@ class MockAnimeData {
   ) {
     // Multiple working video URLs to test different sizes and sources
     final videoUrls = [
-      'https://www.papytane.com/mp4/accrobra.mp4',
-      'https://www.papytane.com/mp4/accrobra.mp4',
+      'assets/videos/video1.mp4',
+      'assets/videos/video1.mp4',
       'https://www.papytane.com/mp4/accrobra.mp4',
       'https://www.papytane.com/mp4/accrobra.mp4',
       'https://www.papytane.com/mp4/accrobra.mp4',

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:chewie/chewie.dart';
@@ -33,12 +34,26 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       print('🎬 Initializing video player...');
       print('📹 Video URL: ${widget.episode.videoUrl}');
 
-      _videoPlayerController = VideoPlayerController.asset(
-        'assets/videos/video.mp4',
-      );
-      // _videoPlayerController = VideoPlayerController.networkUrl(
-      //   Uri.parse(widget.episode.videoUrl),
-      // );
+      // Smart detection: Network URL vs Local File vs Assets
+      final videoUrl = widget.episode.videoUrl;
+      
+      if (videoUrl.startsWith('http://') || videoUrl.startsWith('https://')) {
+        // Network video (online streaming)
+        print('🌐 Loading from network...');
+        _videoPlayerController = VideoPlayerController.networkUrl(
+          Uri.parse(videoUrl),
+        );
+      } else if (videoUrl.startsWith('assets/')) {
+        // Asset video (bundled with app)
+        print('📦 Loading from assets...');
+        _videoPlayerController = VideoPlayerController.asset(videoUrl);
+      } else {
+        // Local file video (device storage)
+        print('📱 Loading from local file...');
+        _videoPlayerController = VideoPlayerController.file(
+          File(videoUrl),
+        );
+      }
 
       // Listen for errors
       _videoPlayerController.addListener(() {

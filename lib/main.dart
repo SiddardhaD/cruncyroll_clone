@@ -9,7 +9,7 @@ import 'core/theme/app_theme.dart';
 import 'presentation/bloc/home/home_bloc.dart';
 import 'presentation/bloc/anime_details/anime_details_bloc.dart';
 import 'presentation/bloc/favorites/favorites_bloc.dart';
-import 'presentation/pages/dashboard/dashboard_page.dart';
+import 'presentation/pages/login/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,7 +63,7 @@ class CrunchyrollApp extends StatelessWidget {
             title: 'Crunchyroll',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.darkTheme,
-            home: const DashboardPage(),
+            home: const LoginPage(),
           ),
         );
       },
